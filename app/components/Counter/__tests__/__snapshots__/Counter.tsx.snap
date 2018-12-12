@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with defaults 1`] = `
+<Styled(Container)>
+  <Styled(Button)
+    onPress={[Function]}
+    small={true}
+  >
+    <Styled(Text)>
+      -
+    </Styled(Text)>
+  </Styled(Button)>
+  <Styled(Text)>
+    10
+  </Styled(Text)>
+  <Styled(Button)
+    onPress={[Function]}
+    small={true}
+  >
+    <Styled(Text)>
+      +
+    </Styled(Text)>
+  </Styled(Button)>
+</Styled(Container)>
+`;
