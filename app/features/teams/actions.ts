@@ -1,7 +1,7 @@
 import * as teamConstants from './constants';
 import { ActionCreator, Action } from 'redux';
 import { normalize } from 'normalizr';
-import { teamsSchema } from './../../schemas/team';
+import { teamsSchema } from './schema';
 
 export const begin: ActionCreator<Action> = () => ({
   type: teamConstants.FETCH_TEAMS_BEGIN

@@ -1,7 +1,7 @@
 import * as matchesConstants from './constants';
 import { ActionCreator, Action } from 'redux';
 import { normalize } from 'normalizr';
-import { matchesSchema } from './../../schemas/match';
+import { matchesSchema } from './schema';
 
 export const begin: ActionCreator<Action> = () => ({
   type: matchesConstants.FETCH_MATCHES_BEGIN

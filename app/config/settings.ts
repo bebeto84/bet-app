@@ -8,3 +8,5 @@ export const MATCHES_URL: string =
   'https://api.football-data.org/v2/matches?competitions=2014&dateFrom=2018-11-29&dateTo=2018-12-08';
 export const TEAMS_URL: string =
   'https://api.football-data.org/v2/competitions/2014/teams';
+export const COMPETITIONS_URL: string =
+  'https://api.football-data.org/v2/competitions?plan=TIER_ONE';

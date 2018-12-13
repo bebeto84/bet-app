@@ -1,3 +1,5 @@
+import { GestureResponderEvent } from 'react-native';
+
 export interface TeamProps {
   id: number;
   name: string;
@@ -14,8 +16,9 @@ export interface MatchProps {
   onScore?: () => any;
 }
 
-export interface MatchScreenProps {
+export interface MatchComponentProps {
   match: MatchProps;
   homeTeam: TeamProps;
   awayTeam: TeamProps;
+  toTeam: (ev: GestureResponderEvent) => void;
 }

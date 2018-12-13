@@ -2,7 +2,13 @@ import * as React from 'react';
 import { MatchProps, Match } from './../../components/Match';
 import { NavigationScreenProps } from 'react-navigation';
 
-import { ScrollView, View, Button, Text } from 'react-native';
+import {
+  ScrollView,
+  View,
+  Button,
+  Text,
+  GestureResponderEvent
+} from 'react-native';
 import { getTemplate } from './../../screens/template';
 import { getTeamById } from './../../features/teams/selectors';
 
@@ -17,8 +23,8 @@ export class MatchesScreen extends React.Component<MatchesScreenProps> {
     this.props.init();
   }
 
-  navigateToTeam = (id: number): void => {
-    this.props.navigation.navigate('ModalScreen');
+  navigateToTeam = (ev: GestureResponderEvent): void => {
+    this.props.navigation.navigate('TeamModalScreen');
   };
 
   render() {
