@@ -1,78 +1,42 @@
 import * as React from 'react';
-import { MatchProps, Match, TeamProps } from './../../components/Match';
+import { MatchProps, Match } from './../../components/Match';
 import { NavigationScreenProps } from 'react-navigation';
-import {
-  Container,
-  Header,
-  Button,
-  Icon,
-  Left,
-  Right,
-  Body,
-  Title,
-  Content,
-  Footer,
-  Badge,
-  Text
-} from 'native-base';
-import { ScrollView } from 'react-native';
 
-export interface MatchesScreenProps {
+import { ScrollView, View, Button, Text } from 'react-native';
+import { getTemplate } from './../../screens/template';
+import { getTeamById } from './../../features/teams/selectors';
+
+export interface MatchesScreenProps extends NavigationScreenProps {
   matches: MatchProps[];
   teams: any;
   init: any;
-  navigation: NavigationScreenProps<any, any>;
 }
-const getTeam: any = (teams: any, match: MatchProps) => {
-  return {
-    homeTeam: teams[match.homeTeam],
-    awayTeam: teams[match.awayTeam]
-  };
-};
 
-export class MatchesScreen extends React.Component<MatchesScreenProps, {}> {
+export class MatchesScreen extends React.Component<MatchesScreenProps> {
   componentDidMount() {
     this.props.init();
   }
 
-  render(): any {
-    debugger;
+  navigateToTeam = (id: number): void => {
+    this.props.navigation.navigate('ModalScreen');
+  };
+
+  render() {
     const matches = this.props.matches.map(match => {
       if (match) {
-        const { awayTeam, homeTeam } = getTeam(this.props.teams, match);
+        const { awayTeam, homeTeam } = getTeamById(this.props.teams, match);
         return (
           <Match
             key={match.id}
             match={match}
             awayTeam={awayTeam}
             homeTeam={homeTeam}
+            toTeam={this.navigateToTeam}
           />
         );
       }
       return null;
     });
-    return (
-      <Container>
-        <Header>
-          <Left>
-            <Button transparent={true}>
-              <Icon name="menu" />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Matches</Title>
-          </Body>
-          <Right>
-            <Badge>
-              <Text>{matches.length}</Text>
-            </Badge>
-          </Right>
-        </Header>
-        <Content>
-          <ScrollView>{matches}</ScrollView>
-        </Content>
-        <Footer />
-      </Container>
-    ); //
+    return getTemplate(this.props, <ScrollView>{matches}</ScrollView>); //
   }
 }
